@@ -1,25 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace UsingDemo
+class GaCo1
 {
-    class Program
+    private const int maxGarbage = 1000;
+
+    static void Main()
     {
+       
+        GaCo1.MakeSomeGarbage();
+        Console.WriteLine("Memory used before collection:       {0:N0}",
+                        GC.GetTotalMemory(false));
+        GC.Collect();
+        Console.WriteLine("Memory used before collection:       {0:N0}",
+                        GC.GetTotalMemory(true));
+        Console.ReadKey();
+    }
 
-        static void Main(string[] args)
+    static void MakeSomeGarbage()
+    {
+        for (int i = 0; i < maxGarbage; i++)
         {
-            var font2 = new Font("Arial", 10.0f);
-            using (font2)
-            {
-                font2.GetHeight();
-            }
-            float f = font2.GetHeight();
+            GaCo1 obj = new GaCo1();
         }
-
-    }   
     }
 }
